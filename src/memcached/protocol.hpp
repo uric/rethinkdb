@@ -14,7 +14,7 @@
 #include "containers/archive/stl_types.hpp"
 #include "memcached/memcached_btree/backfill.hpp"
 #include "memcached/queries.hpp"
-#include "memcached/region.hpp"
+#include "rdb_protocol/region.hpp"
 #include "hash_region.hpp"
 #include "protocol_api.hpp"
 #include "rpc/serialize_macros.hpp"

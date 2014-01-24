@@ -22,7 +22,7 @@
 #include "hash_region.hpp"
 #include "http/json.hpp"
 #include "http/json/cJSON.hpp"
-#include "memcached/region.hpp"
+#include "rdb_protocol/region.hpp"
 #include "protocol_api.hpp"
 #include "rdb_protocol/datum.hpp"
 #include "rdb_protocol/profile.hpp"

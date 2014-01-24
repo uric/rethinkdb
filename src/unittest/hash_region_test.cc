@@ -1,7 +1,7 @@
 // Copyright 2010-2012 RethinkDB, all rights reserved.
 #include "btree/keys.hpp"
 #include "hash_region.hpp"
-#include "memcached/region.hpp"
+#include "rdb_protocol/region.hpp"
 #include "unittest/gtest.hpp"
 
 namespace unittest {
