@@ -179,9 +179,6 @@ const char *set_database_table_option_desc = "The table to move to the specified
 const char *set_database_database_option_desc = "the database to move to";
 const char *set_auth_key_option_desc = "the key that clients must provide when connecting, maximum length is 2048 characters";
 const char *create_table_name_option_desc = "the name of the new table";
-// TODO: fix this once multiple protocols are supported again
-// const char *create_table_port_option_desc = "the port for the table to serve data from for every machine in the cluster";
-// const char *create_table_protocol_option_desc = "the protocol for the table to use, either 'rdb' or 'memcached'";
 const char *create_table_primary_option_desc = "the primary datacenter of the new table, this datacenter will host the master replicas of each shard";
 const char *create_table_primary_key_option_desc = "the field to use as the primary key in the new table";
 const char *create_table_database_option_desc = "the database that the table will exist in, client requests must be directed to this database";
@@ -686,9 +683,7 @@ void admin_command_parser_t::build_command_descriptions() {
     info->add_flag("long", 0, false);
 
     info = add_command(list_tables_command, list_tables_command, list_tables_usage, &admin_cluster_link_t::do_admin_list_tables, &commands);
-    // TODO: fix this once multiple protocols are supported again
     info->add_flag("protocol", 1, false, true); // hidden option
-    // info->add_flag("protocol", 1, false)->add_options("rdb", "memcached", NULLPTR);
     info->add_flag("long", 0, false);
 
     info = add_command(list_datacenters_command, list_datacenters_command, list_datacenters_usage, &admin_cluster_link_t::do_admin_list_datacenters, &commands);
@@ -703,9 +698,8 @@ void admin_command_parser_t::build_command_descriptions() {
     info->add_positional("name", 1, true);
     // TODO: fix this once multiple protocols are supported again
     info->add_flag("protocol", 1, false, true); // hidden option
+    // RSI: old port option.
     info->add_flag("port", 1, false, true); // hidden option
-    // info->add_flag("protocol", 1, false)->add_options("rdb", "memcached", NULLPTR);
-    // info->add_flag("port", 1, true);
     info->add_flag("primary", 1, false)->add_option("!datacenter");
     info->add_flag("primary-key", 1, false);
     info->add_flag("database", 1, true)->add_option("!database");

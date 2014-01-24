@@ -107,17 +107,6 @@
 // TODO: make this dynamic where possible
 #define MAX_THREADS                               128
 
-// Ticks (in milliseconds) the internal timed tasks are performed at
-#define TIMER_TICKS_IN_MS                         5
-
-// How many milliseconds to allow changes to sit in memory before flushing to disk
-#define DEFAULT_FLUSH_TIMER_MS                    1000
-
-// If non-null disk_ack_signals are present, concurrent flushing can be used to reduce the
-// latency of each single flush. max_concurrent_flushes controls how many flushes can be active
-// on a specific slice at any given time.
-#define DEFAULT_MAX_CONCURRENT_FLUSHES            1
-
 // How many times the page replacement algorithm tries to find an eligible page before giving up.
 // Note that (MAX_UNSAVED_DATA_LIMIT_FRACTION ** PAGE_REPL_NUM_TRIES) is the probability that the
 // page replacement algorithm will succeed on a given try, and if that probability is less than 1/2
@@ -126,29 +115,6 @@
 
 // How large can the key be, in bytes?  This value needs to fit in a byte.
 #define MAX_KEY_SIZE                              250
-
-// Any values of this size or less will be directly stored in btree leaf nodes.
-// Values greater than this size will be stored in overflow blocks. This value
-// needs to fit in a byte.
-#define MAX_IN_NODE_VALUE_SIZE                    250
-
-// memcached specifies the maximum value size to be 1MB, but customers asked this to be much higher
-#define MAX_VALUE_SIZE                            (10 * MEGABYTE)
-
-// Values larger than this will be streamed in a get operation
-#define MAX_BUFFERED_GET_SIZE                     MAX_VALUE_SIZE // streaming is too slow for now, so we disable it completely
-
-// If a single connection sends this many 'noreply' commands, the next command will
-// have to wait until the first one finishes
-#define MAX_CONCURRENT_QUERIES_PER_CONNECTION     500
-
-// The number of concurrent queries when loading memcached operations from a file.
-#define MAX_CONCURRENT_QUEURIES_ON_IMPORT         1000
-
-// How many timestamps we store in a leaf node.  We store the
-// NUM_LEAF_NODE_EARLIER_TIMES+1 most-recent timestamps.
-#define NUM_LEAF_NODE_EARLIER_TIMES               4
-
 
 // Special block IDs.  These don't really belong here because they're
 // more magic constants than tunable parameters.

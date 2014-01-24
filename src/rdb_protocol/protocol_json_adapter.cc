@@ -1,5 +1,5 @@
 // Copyright 2010-2013 RethinkDB, all rights reserved.
-#include "memcached/protocol_json_adapter.hpp"
+#include "rdb_protocol/protocol_json_adapter.hpp"
 
 #include <string>
 
